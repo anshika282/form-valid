@@ -20,7 +20,7 @@ class Formcontroller extends Controller
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
                 'email' => 'required|email|unique:forms,email',
-                'phone' => 'required|string',
+                'phone' => 'required',
                 'linkedin' => 'nullable|url',
             ]);
 
@@ -29,7 +29,7 @@ class Formcontroller extends Controller
             return response()->json(['message' => 'Form submitted successfully.'], 200);
         } catch (ValidationException $e) {
             return response()->json([
-                'message' => 'Validation failed.',
+                'message' => 'Validation failed due to email already exists.',
                 'errors' => $e->errors(),
             ], 422);
         }

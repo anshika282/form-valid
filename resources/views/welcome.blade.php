@@ -34,7 +34,7 @@
             </div>
             <div class="mb-3">
                 <label for="last_name" class="form-label">Last Name*</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" required>
+                <input type="text" class="form-control" id="last_name" name="last_name" pattern="^[A-Za-z]+$" required>
                 <div class="invalid-feedback">Last name is required.</div>
             </div>
             <div class="mb-3">
@@ -109,7 +109,7 @@
                     form.reset();
                     form.classList.remove('was-validated');
                 } else {
-                    alert(result.message || 'Submission failed.');
+                    alert(result.errors || 'Submission failed.');
                 }
             } catch (error) {
                 alert('Something went wrong. Please try again.');
